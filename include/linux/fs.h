@@ -1695,6 +1695,9 @@ extern long compat_ptr_ioctl(struct file *file, unsigned int cmd,
 #else
 #define compat_ptr_ioctl NULL
 #endif
+int vfs_mkobj(struct dentry *, umode_t,
+		int (*f)(struct dentry *, umode_t, void *),
+		void *);
 
 /*
  * VFS file helper functions.
