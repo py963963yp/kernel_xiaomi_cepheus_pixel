@@ -13,15 +13,15 @@ else
         git fetch kernelsu
     else
         echo "Adding kernelsu remote..."
-        git remote add kernelsu https://github.com/tiann/KernelSU.git
+        git remote add kernelsu https://github.com/balgxmr/KernelSU.git
         git fetch kernelsu
     fi
 
-    if git ls-remote --heads kernelsu main; then
-        git read-tree --prefix=drivers/staging/kernelsu/ -u kernelsu/main
+    if git ls-remote --heads kernelsu yes; then
+        git read-tree --prefix=drivers/staging/kernelsu/ -u kernelsu/yes
         echo "Done. Now commit changes."
     else
-        echo "Error: Branch 'main' does not exist in remote 'kernelsu'."
+        echo "Error: Branch 'yes' does not exist in remote 'kernelsu'."
     fi
 fi
 
