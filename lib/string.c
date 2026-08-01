@@ -494,7 +494,9 @@ size_t strlen(const char *s)
 		/* nothing */;
 	return sc - s;
 }
+#ifndef __HAVE_ARCH_STRLEN
 EXPORT_SYMBOL(strlen);
+#endif
 #endif
 
 #ifndef __HAVE_ARCH_STRNLEN
