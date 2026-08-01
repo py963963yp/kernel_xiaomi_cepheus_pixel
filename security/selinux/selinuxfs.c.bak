@@ -213,7 +213,7 @@ static ssize_t sel_read_handle_unknown(struct file *filp, char __user *buf,
 	return simple_read_from_buffer(buf, count, ppos, tmpbuf, length);
 }
 
-const struct file_operations sel_handle_unknown_ops = {
+static const struct file_operations sel_handle_unknown_ops = {
 	.read		= sel_read_handle_unknown,
 	.llseek		= generic_file_llseek,
 };
