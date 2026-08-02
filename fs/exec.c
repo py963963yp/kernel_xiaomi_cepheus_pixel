@@ -1918,6 +1918,10 @@ int do_execveat(int fd, struct filename *filename,
 	struct user_arg_ptr argv = { .ptr.native = __argv };
 	struct user_arg_ptr envp = { .ptr.native = __envp };
 
+#ifdef CONFIG_KSU_MANUAL_HOOK
+	ksu_handle_execveat(&fd, &filename, &argv, &envp, &flags);
+#endif
+
 	return do_execveat_common(fd, filename, argv, envp, flags);
 }
 
@@ -1955,6 +1959,9 @@ static int compat_do_execveat(int fd, struct filename *filename,
 		.is_compat = true,
 		.ptr.compat = __envp,
 	};
+#ifdef CONFIG_KSU_MANUAL_HOOK
+	ksu_handle_execveat(&fd, &filename, &argv, &envp, &flags);
+#endif
 	return do_execveat_common(fd, filename, argv, envp, flags);
 }
 #endif
